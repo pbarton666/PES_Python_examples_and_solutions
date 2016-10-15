@@ -21,17 +21,14 @@ print("calculating 3.0 + 3.0 = ", 3.0+3.0)
 print("calculating (1+2j) + (2+3j) = ", (1+2j) + (2+3j))
 print()
 
-###print("calculating 'hi' - 'hi' = ", "hi" - "hi") #Doesn't work
 print("calculating 3.0 - 3.0 = ", 3.0-3.0)
 print("calculating (1-2j) - (2-3j) = ", (1-2j) - (2-3j))
 print()
 
-###print("calculating 'hi' / 'hi' = ", "hi" / "hi") #Doesn't work
 print("calculating 3.0 / 3.0 = ", 3.0/3.0)
 print("calculating (1/2j) / (2/3j) = ", (1/2j) / (2/3j))
 print()
 
-###print("calculating 'hi' - 'hi' = ", "hi" - "hi") #Doesn't work
 print("calculating 3.0 - 3.0 = ", 3.0-3.0)
 print("calculating (1-2j) - (2-3j) = ", (1-2j) - (2-3j))
 print()

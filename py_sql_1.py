@@ -5,7 +5,7 @@
 import sqlite3
 
 #create a connection object (on other RMDBs you'd provide credentials, too)
-conn = sqlite3.connect('dbase1')
+conn = sqlite3.connect('mydb')
 
 #creates a cursor object
 curs = conn.cursor()
