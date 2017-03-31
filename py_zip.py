@@ -40,7 +40,8 @@ try:
 				relative_path = absolute_path.replace(this_dir + '\\', "")
 				#don't zip archives (prevent recursion) or .pyc files
 				if not zipfile.is_zipfile(absolute_path) and\
-				   not absolute_path.endswith("pyc"):		                     
+				   not absolute_path.endswith("pyc") and\
+				   not absolute_path.endswith("masked"):		                     
 					print ("Adding {} to archive.".format(absolute_path))
 					archive.write(absolute_path, relative_path)
 				

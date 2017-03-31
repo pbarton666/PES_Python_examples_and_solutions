@@ -1,7 +1,7 @@
 #py_while_for.py	
 counter=0
 for i in range(10):
-	if i %2:   #even numbers
+	if i %2:   #grab odd numbers
 		while True:
 			if counter==1:
 				print("One is the loneliest number that there ever was.")

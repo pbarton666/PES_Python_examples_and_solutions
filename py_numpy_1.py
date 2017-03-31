@@ -7,7 +7,7 @@ import numpy as np
 import os
 idir =os.getcwd() 
 
-iname= 'im3.png'# 'white_snake.PNG'
+iname= 'eastern_coral_1_clean.png'# 'white_snake.PNG'
 saveas='new_snake.PNG'
 
 #sets up an array for pixel processing
@@ -17,6 +17,7 @@ background = white
 
 #open the image and convert it
 raw_image = Image.open(iname)
+raw_image.show()
 converted_image = raw_image.convert('RGBA')
 raw_image.close()
 h, w = converted_image.size
@@ -39,8 +40,13 @@ new_colors=new_image.getcolors(w*h) #a list of tuples [count (rgba), ...]
 new_image.save(saveas)
 recovered_image = Image.open(saveas)
 h, w = recovered_image.size
+
+#we've successfully 'masked out' and replaced the background
+new_image.show()
 recovered_histo=recovered_image.histogram()
 recovered_colors=recovered_image.getcolors(w*h) #a list of tuples [count (rgba), ...]
+
+#but we can do more...
 
 #strategy: make a list of color bins we expect to find. These will have pixel ranges
 # that are human-friendly e.g., 'brownish', 'gold'. Each spec within the bin can be

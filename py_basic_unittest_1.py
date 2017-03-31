@@ -1,4 +1,4 @@
-#py_basic_unittest.py
+#py_basic_unittest_1.py
 
 def odd_man_out(inp):
 	"""If input looks like an odd integer, return
@@ -20,12 +20,6 @@ if __name__=='__main__':
 	class tester(unittest.TestCase):
 		def test_odd_integer(self):
 			self.assertEqual(odd_man_out(3), 6)
-		def test_odd_string(self):
-			self.assertEqual(odd_man_out('123'), 246)
-		def test_odd_float(self):
-			self.assertEqual(odd_man_out(30.0), 60.0)
-		def test_list(self):
-			self.assertEqual(odd_man_out([1,2,3]), None)					
-		def test_complex(self):
-			self.assertEqual(odd_man_out(complex(1,2)), None)
+		def test_even_integer(self):
+			self.assertEqual(odd_man_out(4), None)
 	unittest.main()
