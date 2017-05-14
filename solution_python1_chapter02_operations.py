@@ -9,7 +9,7 @@ help(int.__mod__)
 buckets_per_fire=3
 buckets_available=50
 
-fires_snuffed = buckets_available - buckets_available % buckets_per_fire
+fires_snuffed = buckets_available - (buckets_available % buckets_per_fire)
 print("fires snuffed: {}\n".format(fires_snuffed))
 
 

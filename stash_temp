@@ -1,0 +1,62 @@
+
+#Linear discriminant analyis assumes that the IVs are normally.
+#   distributed technically, multivariate normal.
+#   Here's how to do both univariate normalicy tests
+
+#identify a threshhold p-value (small value -> reject H0)
+p_target=.05
+
+#  This uses D'Agostino's K-squared:
+#     skew_test_z-score ^2 + kurtosis_test_z-score ^2
+#  
+#  Test loooks for chi^2 distro w/ 2 df - asks 'is shape about right?'
+#     H0: distribution is normal  (this is the "null hypothesis")
+
+print("D'Agostino's K-squared test ")
+print(" ... fails if p < {}".format(p_target))
+
+#So, are the IVs ("features") individually normal?  Here's the analytical take:
+for iv in iv_names:
+	data=df[iv]	
+	statistic, p =scipy.stats.normaltest(data)
+	if p<p_target:
+		result='FAILED. SAD!'
+	else: result='passed'
+	print("\tfeature: {:<10} {:<20} p={:<10}".\
+		  format(iv, result, round(p,2)))
+print()	
+
+#Let's "eyeball" them using a grid of plots
+
+#set up the rows/columns for our plot object
+cols=3
+rows=math.ceil(len(iv_names)/cols) 
+
+#create a plot object
+plt.figure()
+
+#loop over our data vectors and create Q-Q charts for each
+row=1; col=1; subplot=1
+for iv in iv_names:    
+	data=df[iv]	                           #grab the data
+	plt.subplot(rows, cols, subplot)       #create the subplot object
+	scipy.stats.probplot(data, plot=plt)   #stuff it w/ data
+	plt.title(iv)                          #give it a nice title
+	#reset indices 
+	col+=1
+	if col>cols: 
+		col=1
+		row+=1
+	subplot+=1
+
+#spruce it up aesthetically 
+fig=plt.gcf()   #get current figure - figure object is main container
+fig.canvas.set_window_title("Q-Q Charts")
+plt.tight_layout() #alternative:  plt.subplots_adjust()  
+#live=True
+if live: plt.show()
+
+#Let's say that the IVs are reasonably normal - after all, 
+#  our data set is pretty large (n=150) so we've got a bit
+#  of slack due to the central limit theorum (lots of data ->
+#  mean close to population mean)
